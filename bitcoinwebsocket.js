@@ -12,7 +12,7 @@ var chart = Highcharts.stockChart('chart', {
     title: {
       text: 'BTCUSDT Candlestick',
       style: {
-        color: '#278827fa'
+        color: '#000000'
       }
     },
     series: [{

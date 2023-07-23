@@ -82,3 +82,28 @@ h1 {
     text-align: center;
     z-index: -1;
 }
+
+.navlinks a:hover {
+    color: black
+}
+
+.links {
+    font-size: 200%;
+    text-decoration: none;
+    color: black;
+}
+
+.links:hover {
+    color: #278827fa
+}
+
+.list {
+    display: inline-block;
+    padding-inline: 1%;
+    vertical-align: top;
+}
+
+.message {
+    font-size: xx-large;
+    text-align: center;
+}

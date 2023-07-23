@@ -2,36 +2,36 @@
 <html lang = 'en'>
     <head>
         <title>manipchi</title>
-        <link href="style.css" rel="stylesheet" type="text/css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        
+        <link href="index.css" rel="stylesheet" type="text/css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/stock.js"></script>
-    
+        <script type = 'text/javascript'>
+            function changeBackgroundColour(colour){
+                document.documentElement.style.backgroundColor = '#' + colour;
+            }
+        </script>
+
     </head>
 
     <body>
-        <nav class = 'navbar'>
-            <div class = 'navlinks'>
-                <a href = './data.html' target = '_blank'> data </a>
-                <a href = './blank.html'>maths</a>
-                <a href = './blank.html'>anki</a>
-                <a href = './blank.html'>reading</a>
-            </div>
-        </nav>
         <header>
             <h1>
-                <div class = 'logos'>
-                    <a href = 'https://www.linkedin.com/in/manipchi' target="_blank" class = 'logos' id = 'linkedin'>
+                <div class = 'logos' onmouseout="changeBackgroundColour('ffffff')">
+                    <a href = 'https://www.linkedin.com/in/manipchi' target="_blank" class = 'logos' id = 'linkedin' onmouseover="changeBackgroundColour('0072b1')">
                         <i class="fa fa-linkedin-square"></i>
                     </a> 
-                    <a href = 'https://open.spotify.com/user/manipchi' target="_blank" class = 'logos' id = 'spotify'>
+                    <a href = 'https://open.spotify.com/user/manipchi' target="_blank" class = 'logos' id = 'spotify' onmouseover="changeBackgroundColour('1db954')">
                         <i class="fa fa-spotify"></i>
                     </a> 
-                    <a href = 'https://github.com/manipchi' target="_blank" class = 'logos' id = 'github'>
+                    <a href = 'https://github.com/manipchi' target="_blank" class = 'logos' id = 'github' onmouseover="changeBackgroundColour('171515')">
                         <i class="fa fa-github"></i>
                     </a> 
                 </div>
@@ -39,16 +39,26 @@
             </h1>
         </header>
 
+
+
         <p class = 'quote'>
             In the land of the blind, the one eyed man is king.
         </p>
 
-        <div id ='trades'></div>
+        <p class = 'links'>
+            <a class = 'trading' onmouseover="changeBackgroundColour('e53a3a')" href = './trading.html'>trading</a>
+            <br>
+            <a class = 'maths' onmouseover="changeBackgroundColour('e5733a')" href = './maths.html' >maths</a>
+            <br>
+            <a class = 'data' onmouseover="changeBackgroundColour('96bd2b')" href = './data.html'>data</a>
+            <br>
+            <a class = 'anki' onmouseover="changeBackgroundColour('278827')" href = './anki.html'>anki</a>
+            <br>
+            <a class = 'reading' onmouseover="changeBackgroundColour('3a73e5')" href = './reading.html'>reading</a>
+        </p>
 
-        <div id='chart'></div>
+        
 
-
-        <script src = 'bitcoinwebsocket.js'></script>
 
     </body>
 </html> 
