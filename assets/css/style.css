@@ -606,37 +606,35 @@ main {
    Resources Page
    ============================================ */
 .resources-section {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .resources-section h2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--accent-color);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
     border-bottom: 1px solid var(--card-border);
 }
 
 .resources-list {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
 }
 
 .resources-list li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--card-border);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-}
-
-.resources-list li:last-child {
-    border-bottom: none;
+    gap: 0.4rem;
 }
 
 .resources-list a {
     color: var(--text-color);
     text-decoration: none;
     transition: color var(--transition-speed);
+    font-size: 1.5rem;
 }
 
 .resources-list a:hover {
@@ -644,9 +642,9 @@ main {
 }
 
 .resources-list img {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
 }
 
 /* ============================================
