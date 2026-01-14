@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mani</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">home</a>
+            <div class="nav-links">
+                <a href="/blog/">blog</a>
+                <a href="/resources/">resources</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+    <div class="hero-content">
+        <div class="hero-image">
+            <img src="/assets/images/profile.jpg" alt="Mani">
+        </div>
+        <div class="hero-text">
+            <h1>Mani Ipchi</h1>
+            <p class="tagline">Part III Maths at Cambridge</p>
+            <div class="hero-links" onmouseout="resetBackground()">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/manipchi" target="_blank" id="github" onmouseover="changeBackgroundColour('171515')">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://letterboxd.com/manipchi/" target="_blank" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                    <span class="letterboxd-logo">
+                        <span class="circle-orange"></span>
+                        <span class="circle-green"></span>
+                        <span class="circle-blue"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">about</h2>
+    <div class="about-text">
+        <p>
+            [Write a few sentences about yourself here. What do you do? What are you interested in? 
+            What gets you excited?]
+        </p>
+        <p>
+            [Maybe a second paragraph about your background, what you're currently working on, 
+            or what you're looking to do next.]
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">experience</h2>
+    <ul class="simple-list">
+        <li><span class="date">2024 — Present</span> [Role] at [Company]</li>
+        <li><span class="date">2021 — 2024</span> [Role/Education] at [Place]</li>
+        <li><span class="date">2018 — 2021</span> [Earlier Experience]</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2 class="section-title">projects</h2>
+    <ul class="simple-list">
+        <li><a href="https://www.limbo.today" target="_blank">limbo.today</a> — a daily game of LUPI (Lowest Unique Positive Integer)</li>
+        <li><a href="#">[Project Name]</a> — [brief description]</li>
+        <li><a href="#">[Project Name]</a> — [brief description]</li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2 class="section-title">anki decks</h2>
+    <p class="section-desc">Flashcard decks I made while studying the Maths Tripos at Cambridge.</p>
+    <ul class="simple-list inline">
+        <li><a href="./IA.apkg" download="PartIA">Part IA</a></li>
+        <li><a href="./IB.apkg" download="PartIB">Part IB</a></li>
+        <li><a href="./II.apkg" download="PartII">Part II</a></li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2 class="section-title">latest posts</h2>
+    <div class="posts-list">
+        
+        <article class="post-preview">
+            <a href="/blog/2026/01/12/hello-world/">
+                <h2>Hello World</h2>
+                <p class="post-date">January 12, 2026</p>
+            </a>
+        </article>
+        
+        
+    </div>
+    
+    <p style="margin-top: 1rem;"><a href="/blog/" style="color: var(--accent-color);">view all posts →</a></p>
+    
+</section> 
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" onmouseout="resetBackground()">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" class="social-link" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/manipchi" target="_blank" class="social-link" id="github" onmouseover="changeBackgroundColour('171515')">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" class="social-link" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://letterboxd.com/manipchi/" target="_blank" class="social-link" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                    <span class="letterboxd-logo">
+                        <span class="circle-orange"></span>
+                        <span class="circle-green"></span>
+                        <span class="circle-blue"></span>
+                    </span>
+                </a>
+            </div>
+            <p class="footer-text">© 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme management
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme
+        setTheme(getPreferredTheme());
+
+        // Background color hover effects
+        function changeBackgroundColour(colour) {
+            document.body.style.backgroundColor = '#' + colour;
+        }
+
+        function resetBackground() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const defaultBg = theme === 'dark' ? '#0d1117' : '#ffffff';
+            document.body.style.backgroundColor = defaultBg;
+        }
+    </script>
+</body>
+</html>

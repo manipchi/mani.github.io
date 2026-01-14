@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">home</a>
+            <div class="nav-links">
+                <a href="/blog/">blog</a>
+                <a href="/resources/">resources</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1 style="margin-bottom: 1rem;">limbo.today</h1>
+
+<div class="about-text" style="margin-bottom: 2rem;">
+    <p>
+        I made a website for a daily game of <a href="https://en.wikipedia.org/wiki/Unique_bid_auction#Mathematical_analysis" target="_blank" style="color: var(--link-color);">LUPI (Lowest Unique Positive Integer)</a>.
+    </p>
+    <p>
+        You can play it at <a href="https://www.limbo.today" target="_blank" style="color: var(--accent-color); font-weight: 600;">limbo.today</a>
+    </p>
+    <p>
+        Below is an interactive chart showing the distribution of guesses over time for the busiest month.
+    </p>
+</div>
+
+<div id="guessChart" style="width:100%; height:600px; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--card-border);"></div>
+
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
+            // Load your data
+            fetch('guess_data.json')
+              .then(response => response.json())
+              .then(data => {
+                createGuessChart(data);
+              })
+              .catch(error => console.error('Error loading data:', error));
+            
+            function createGuessChart(chartData) {
+              const dates = Object.keys(chartData).sort();
+              
+              // Create just ONE trace that we'll update
+              const firstDate = dates[0];
+              const firstData = chartData[firstDate];
+              
+              const trace = {
+                x: firstData.positions,
+                y: firstData.counts,
+                type: 'bar',
+                marker: {
+                  color: firstData.colors,
+                  line: {width: 0}
+                },
+                width: 0.8,
+                hovertemplate: 'Value: %{x}<br>Count: %{y}<extra></extra>'
+              };
+            
+              // Create slider steps that update the single trace
+              const steps = [];
+              dates.forEach((date, index) => {
+                const dateData = chartData[date];
+                const step = {
+                  method: 'update',
+                  args: [
+                    {
+                      x: [dateData.positions],
+                      y: [dateData.counts],
+                      'marker.color': [dateData.colors]
+                    },
+                    {
+                      title: `Guess Distribution - ${date} (n=${dateData.total_count})${dateData.winning_guess ? ' | Winner: ' + dateData.winning_guess : ''}`,
+                      'xaxis.range': [0, Math.min(101, Math.max(...dateData.positions) + 2)]
+                    }
+                  ],
+                  label: date
+                };
+                steps.push(step);
+              });
+            
+              const layout = {
+                title: `Guess Distribution - ${firstDate} (n=${firstData.total_count})${firstData.winning_guess ? ' | Winner: ' + firstData.winning_guess : ''}`,
+                xaxis: {
+                  title: 'Guess Value', 
+                  range: [0, Math.min(50, Math.max(...firstData.positions) + 2)],
+                  color: '#8b949e',
+                  gridcolor: '#30363d'
+                },
+                yaxis: {
+                  title: 'Frequency',
+                  color: '#8b949e',
+                  gridcolor: '#30363d'
+                },
+                height: 600,
+                showlegend: false,
+                hovermode: 'closest',
+                paper_bgcolor: '#161b22',
+                plot_bgcolor: '#161b22',
+                font: {
+                  family: 'Inconsolata, monospace',
+                  color: '#e6edf3'
+                },
+                sliders: [{
+                  active: 0,
+                  steps: steps,
+                  y: -0.1,
+                  x: 0.05,
+                  len: 0.9,
+                  bgcolor: '#30363d',
+                  bordercolor: '#30363d',
+                  font: {color: '#e6edf3'},
+                  currentvalue: {prefix: "", visible: true, font: {color: '#3fb950'}}
+                }]
+              };
+            
+              Plotly.newPlot('guessChart', [trace], layout, {responsive: true});
+            }
+            </script> 
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" onmouseout="resetBackground()">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" class="social-link" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/manipchi" target="_blank" class="social-link" id="github" onmouseover="changeBackgroundColour('171515')">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" class="social-link" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://letterboxd.com/manipchi/" target="_blank" class="social-link" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                    <span class="letterboxd-logo">
+                        <span class="circle-orange"></span>
+                        <span class="circle-green"></span>
+                        <span class="circle-blue"></span>
+                    </span>
+                </a>
+            </div>
+            <p class="footer-text">© 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme management
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme
+        setTheme(getPreferredTheme());
+
+        // Background color hover effects
+        function changeBackgroundColour(colour) {
+            document.body.style.backgroundColor = '#' + colour;
+        }
+
+        function resetBackground() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const defaultBg = theme === 'dark' ? '#0d1117' : '#ffffff';
+            document.body.style.backgroundColor = defaultBg;
+        }
+    </script>
+</body>
+</html>

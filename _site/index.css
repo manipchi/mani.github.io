@@ -1,0 +1,77 @@
+* {
+    font-family: 'Inconsolata', monospace;
+    box-sizing: border-box;
+}
+
+
+header {
+    font-size: 200%;
+}
+
+h1 {
+    display: flex;
+}
+
+.main-title {
+    color: black;
+    margin: 0 auto;
+    position: absolute;
+    left:45%;
+    text-decoration: none;
+}
+
+.logos {
+    float: left;
+    position: relative;
+    left: 10px;
+    color: black;
+    margin-inline: 10px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+#linkedin:hover {
+    color: white;
+    transition: color 1s, transform 0.5s;
+    transform: scale(1.2);
+}
+
+#spotify:hover {
+    color: white;
+    transition: transform 0.5s, color 1s;
+    transform: scale(1.2);
+}
+
+#github:hover {
+    color: white;
+    transition: transform 0.5s, color 1s;
+    transform: scale(1.2);
+}
+
+.quote { 
+    text-align: center;
+    position: relative;
+    font-style:italic;
+    font-size: 200%;
+    color: black;
+}
+
+.links {
+    text-align: left;
+    position: relative;
+    font-size: 400%;
+    color: black;
+    margin-inline: 45%;
+}
+
+.links a {
+    text-decoration: none;
+    color: black;
+}
+.links a:hover {
+    color: white;
+}
+
+.trading {
+    display: inline-block;
+}

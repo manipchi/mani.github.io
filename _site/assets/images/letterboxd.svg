@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <circle cx="250" cy="250" r="250" fill="#202830"/>
+  <circle cx="150" cy="250" r="85" fill="#ff8000"/>
+  <circle cx="250" cy="250" r="85" fill="#00e054"/>
+  <circle cx="350" cy="250" r="85" fill="#40bcf4"/>
+  <!-- Overlapping white crescents -->
+  <path d="M 196 185 A 85 85 0 0 1 196 315 A 85 85 0 0 0 196 185" fill="#fff"/>
+  <path d="M 304 185 A 85 85 0 0 0 304 315 A 85 85 0 0 1 304 185" fill="#fff"/>
+</svg>

@@ -1,0 +1,30 @@
+---
+layout: default
+title: Blog
+---
+
+<div class="blog-header">
+    <h1>blog</h1>
+    <p>thoughts, learnings, and random musings</p>
+</div>
+
+<div class="posts-list">
+    {% for post in site.posts %}
+    <article class="post-preview">
+        <a href="{{ post.url }}">
+            <h2>{{ post.title }}</h2>
+            <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+            {% if post.excerpt %}
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+            {% endif %}
+        </a>
+    </article>
+    {% endfor %}
+
+    {% if site.posts.size == 0 %}
+    <div class="empty-state">
+        <i class="fa-regular fa-file-lines"></i>
+        <p>no posts yet — check back soon!</p>
+    </div>
+    {% endif %}
+</div>

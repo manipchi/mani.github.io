@@ -1,0 +1,109 @@
+* {
+    font-family: 'Inconsolata', monospace;
+    box-sizing: border-box;
+}
+
+.navbar {
+    height: 50px;
+    width: 100%;
+    background-color: #278827fa;
+    position: sticky;
+}
+
+.navlinks a {
+    display: block;
+    float: left;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: x-large;
+}
+
+header {
+    font-size: x-large;
+}
+
+h1 {
+    display: flex;
+}
+
+.main-title {
+    color: #278827fa;
+    margin: 0 auto;
+    width: 100px;
+    position: relative;
+    text-align: center;
+    left: -150px;
+    text-decoration: none;
+}
+
+.logos {
+    float: left;
+    position: relative;
+    left: 10px;
+    color: #278827fa;
+    margin-inline: 10px;
+    text-decoration: none;
+}
+
+#linkedin:hover {
+    color: #0072b1;
+    transition: color 1s, transform 0.5s;
+    transform: scale(1.2);
+}
+
+#spotify:hover {
+    color: #1db954;
+    transition: transform 0.5s, color 1s;
+    transform: scale(1.2);
+}
+
+#github:hover {
+    color: #171515;
+    transition: transform 0.5s, color 1s;
+    transform: scale(1.2);
+}
+
+.quote { 
+    text-align: center;
+    position: relative;
+    font-style:italic;
+}
+
+.trades {
+    min-height: 100px;
+}
+
+#chart {
+    height: 600px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    z-index: -1;
+}
+
+.navlinks a:hover {
+    color: black
+}
+
+.links {
+    font-size: 200%;
+    text-decoration: none;
+    color: black;
+}
+
+.links:hover {
+    color: #278827fa
+}
+
+.list {
+    display: inline-block;
+    padding-inline: 1%;
+    vertical-align: top;
+}
+
+.message {
+    font-size: xx-large;
+    text-align: center;
+}

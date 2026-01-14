@@ -1,57 +1,26 @@
-<!DOCTYPE html>
-<html lang = 'en'>
-    <head>
-        <title>manipchi</title>
-        <link href="style.css" rel="stylesheet" type="text/css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/stock.js"></script>
-        <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+---
+layout: default
+title: Limbo
+---
 
-    
-    </head>
+<h1 style="margin-bottom: 1rem;">limbo.today</h1>
 
-    <body>
-        <nav class = 'navbar'>
-            <div class = 'navlinks'>
-                <!-- <a href = './trading.html'>trading</a>
-                <a href = './data.html'> data </a> -->
-                <a href = './limbo.html'>limbo</a>
-                <a href = './maths.html'>maths</a>
-                <a href = './anki.html'>anki</a>
-                <a href = './quant.html'>quant</a>
-                <a href = './resources.html'>resources</a>
-            </div>
-        </nav>
-        <header>
-            <h1>
-                <div class = 'logos'>
-                    <a href = 'https://www.linkedin.com/in/manipchi' target="_blank" class = 'logos' id = 'linkedin'>
-                        <i class="fa fa-linkedin-square"></i>
-                    </a> 
-                    <a href = 'https://open.spotify.com/user/manipchi' target="_blank" class = 'logos' id = 'spotify'>
-                        <i class="fa fa-spotify"></i>
-                    </a> 
-                    <a href = 'https://github.com/manipchi' target="_blank" class = 'logos' id = 'github'>
-                        <i class="fa fa-github"></i>
-                    </a> 
-                </div>
-                <a class = 'main-title' href = './index.html'>limbo</a>
-            </h1>
-        </header>
+<div class="about-text" style="margin-bottom: 2rem;">
+    <p>
+        I made a website for a daily game of <a href="https://en.wikipedia.org/wiki/Unique_bid_auction#Mathematical_analysis" target="_blank" style="color: var(--link-color);">LUPI (Lowest Unique Positive Integer)</a>.
+    </p>
+    <p>
+        You can play it at <a href="https://www.limbo.today" target="_blank" style="color: var(--accent-color); font-weight: 600;">limbo.today</a>
+    </p>
+    <p>
+        Below is an interactive chart showing the distribution of guesses over time for the busiest month.
+    </p>
+</div>
 
-        <p class = 'message'>I made a website for a daily game of <a href = "https://en.wikipedia.org/wiki/Unique_bid_auction#Mathematical_analysis" target = "_blank">LUPI(Lowest Unique Positive Integer)</a></p>
-        <p class = 'message'>You can play it <a href = 'https://www.limbo.today' target="_blank">here</a></p>
-        <p class = 'message'>Below is an interactive chart showing the distribution of guesses over time for the busiest month.</p>
-        <div id="guessChart" style="width:100%; height:600px;"></div>
-        <!-- <p class = 'message'>You can <a href = 'https://www.paypal.com/paypalme/manipchi/10' target="_blank">pay me</a> if they are of use to you.</p> -->
+<div id="guessChart" style="width:100%; height:600px; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--card-border);"></div>
 
-
-        <script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
             // Load your data
             fetch('guess_data.json')
               .then(response => response.json())
@@ -105,24 +74,37 @@
                 title: `Guess Distribution - ${firstDate} (n=${firstData.total_count})${firstData.winning_guess ? ' | Winner: ' + firstData.winning_guess : ''}`,
                 xaxis: {
                   title: 'Guess Value', 
-                  range: [0, Math.min(50, Math.max(...firstData.positions) + 2)]
+                  range: [0, Math.min(50, Math.max(...firstData.positions) + 2)],
+                  color: '#8b949e',
+                  gridcolor: '#30363d'
                 },
-                yaxis: {title: 'Frequency'},
+                yaxis: {
+                  title: 'Frequency',
+                  color: '#8b949e',
+                  gridcolor: '#30363d'
+                },
                 height: 600,
                 showlegend: false,
                 hovermode: 'closest',
+                paper_bgcolor: '#161b22',
+                plot_bgcolor: '#161b22',
+                font: {
+                  family: 'Inconsolata, monospace',
+                  color: '#e6edf3'
+                },
                 sliders: [{
                   active: 0,
                   steps: steps,
                   y: -0.1,
                   x: 0.05,
                   len: 0.9,
-                  currentvalue: {prefix: "", visible: true}
+                  bgcolor: '#30363d',
+                  bordercolor: '#30363d',
+                  font: {color: '#e6edf3'},
+                  currentvalue: {prefix: "", visible: true, font: {color: '#3fb950'}}
                 }]
               };
             
-              Plotly.newPlot('guessChart', [trace], layout);
+              Plotly.newPlot('guessChart', [trace], layout, {responsive: true});
             }
-            </script>
-    </body>
-</html> 
+            </script> 

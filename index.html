@@ -1,64 +1,96 @@
-<!DOCTYPE html>
-<html lang = 'en'>
-    <head>
-        <title>manipchi</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-        <link rel="manifest" href="/site.webmanifest">
-        
-        <link href="index.css" rel="stylesheet" type="text/css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <script type = 'text/javascript'>
-            function changeBackgroundColour(colour){
-                document.documentElement.style.backgroundColor = '#' + colour;
-            }
-        </script>
+---
+layout: default
+title: Mani
+---
 
-    </head>
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-image">
+            <img src="/assets/images/profile.jpg" alt="Mani">
+        </div>
+        <div class="hero-text">
+            <h1>Mani Ipchi</h1>
+            <p class="tagline">Part III Maths at Cambridge</p>
+            <div class="hero-links" onmouseout="resetBackground()">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/manipchi" target="_blank" id="github" onmouseover="changeBackgroundColour('171515')">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://letterboxd.com/manipchi/" target="_blank" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                    <span class="letterboxd-logo">
+                        <span class="circle-orange"></span>
+                        <span class="circle-green"></span>
+                        <span class="circle-blue"></span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <body>
-        <header>
-            <h1>
-                <div class = 'logos' onmouseout="changeBackgroundColour('ffffff')">
-                    <a href = 'https://www.linkedin.com/in/manipchi' target="_blank" class = 'logos' id = 'linkedin' onmouseover="changeBackgroundColour('0072b1')">
-                        <i class="fa fa-linkedin-square"></i>
-                    </a> 
-                    <a href = 'https://open.spotify.com/user/manipchi' target="_blank" class = 'logos' id = 'spotify' onmouseover="changeBackgroundColour('1db954')">
-                        <i class="fa fa-spotify"></i>
-                    </a> 
-                    <a href = 'https://github.com/manipchi' target="_blank" class = 'logos' id = 'github' onmouseover="changeBackgroundColour('171515')">
-                        <i class="fa fa-github"></i>
-                    </a> 
-                </div>
-                <a class = 'main-title' href = './index.html'>manipchi</a>
-            </h1>
-        </header>
-
-
-
-        <p class = 'quote'>
-            In the land of the blind, the one eyed man is king.
+<section class="section">
+    <h2 class="section-title">about</h2>
+    <div class="about-text">
+        <p>
+            [Write a few sentences about yourself here. What do you do? What are you interested in? 
+            What gets you excited?]
         </p>
-
-        <p class = 'links'>
-            <a class = 'limbo' onmouseover="changeBackgroundColour('e53a3a')" href = './limbo.html'>limbo</a>
-            <br>
-            <a class = 'maths' onmouseover="changeBackgroundColour('e5733a')" href = './maths.html'>maths</a>
-            <br>
-            <a class = 'anki' onmouseover="changeBackgroundColour('96bd2b')" href = './anki.html' >anki</a>
-            <br>
-            <a class = 'quant' onmouseover="changeBackgroundColour('278827')" href = './quant.html'>quant</a>
-            <br>
-            <a class = 'reading' onmouseover="changeBackgroundColour('3a73e5')" href = './resources.html'>resources</a>
+        <p>
+            [Maybe a second paragraph about your background, what you're currently working on, 
+            or what you're looking to do next.]
         </p>
+    </div>
+</section>
 
-        
+<section class="section">
+    <h2 class="section-title">experience</h2>
+    <ul class="simple-list">
+        <li><span class="date">2024 — Present</span> [Role] at [Company]</li>
+        <li><span class="date">2021 — 2024</span> [Role/Education] at [Place]</li>
+        <li><span class="date">2018 — 2021</span> [Earlier Experience]</li>
+    </ul>
+</section>
 
+<section class="section">
+    <h2 class="section-title">projects</h2>
+    <ul class="simple-list">
+        <li><a href="https://www.limbo.today" target="_blank">limbo.today</a> — a daily game of LUPI (Lowest Unique Positive Integer)</li>
+        <li><a href="#">[Project Name]</a> — [brief description]</li>
+        <li><a href="#">[Project Name]</a> — [brief description]</li>
+    </ul>
+</section>
 
-    </body>
-</html> 
+<section class="section">
+    <h2 class="section-title">anki decks</h2>
+    <p class="section-desc">Flashcard decks I made while studying the Maths Tripos at Cambridge.</p>
+    <ul class="simple-list inline">
+        <li><a href="./IA.apkg" download="PartIA">Part IA</a></li>
+        <li><a href="./IB.apkg" download="PartIB">Part IB</a></li>
+        <li><a href="./II.apkg" download="PartII">Part II</a></li>
+    </ul>
+</section>
+
+<section class="section">
+    <h2 class="section-title">latest posts</h2>
+    <div class="posts-list">
+        {% for post in site.posts limit:3 %}
+        <article class="post-preview">
+            <a href="{{ post.url }}">
+                <h2>{{ post.title }}</h2>
+                <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+            </a>
+        </article>
+        {% endfor %}
+        {% if site.posts.size == 0 %}
+        <p style="color: var(--text-muted);">No posts yet — coming soon!</p>
+        {% endif %}
+    </div>
+    {% if site.posts.size > 0 %}
+    <p style="margin-top: 1rem;"><a href="/blog/" style="color: var(--accent-color);">view all posts →</a></p>
+    {% endif %}
+</section> 
