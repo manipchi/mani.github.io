@@ -1,0 +1,68 @@
+---
+layout: default
+title: Travel
+---
+
+<h1 style="margin-bottom: 2rem;">travel</h1>
+
+<div class="gallery-container">
+    <div class="gallery-viewer" id="gallery-viewer">
+        <button class="gallery-nav gallery-prev" id="gallery-prev" aria-label="Previous photo">&larr;</button>
+        <img id="gallery-image" src="" alt="">
+        <button class="gallery-nav gallery-next" id="gallery-next" aria-label="Next photo">&rarr;</button>
+    </div>
+    <p class="gallery-caption" id="gallery-caption"></p>
+    <p class="gallery-counter" id="gallery-counter"></p>
+</div>
+
+<div class="gallery-empty" id="gallery-empty" style="display: none;">
+    <p>Photos coming soon.</p>
+</div>
+
+<script>
+// Add your photos here — each entry has a src path and a caption.
+// Place images in /assets/images/travel/ and add entries below.
+var photos = [
+    // { src: '/assets/images/travel/photo1.jpg', caption: 'Your caption here' },
+    // { src: '/assets/images/travel/photo2.jpg', caption: 'Another caption' },
+];
+
+var current = 0;
+var viewer = document.getElementById('gallery-viewer');
+var image = document.getElementById('gallery-image');
+var caption = document.getElementById('gallery-caption');
+var counter = document.getElementById('gallery-counter');
+var empty = document.getElementById('gallery-empty');
+
+function show(index) {
+    if (photos.length === 0) return;
+    current = ((index % photos.length) + photos.length) % photos.length;
+    image.src = photos[current].src;
+    image.alt = photos[current].caption;
+    caption.textContent = photos[current].caption;
+    counter.textContent = (current + 1) + ' / ' + photos.length;
+}
+
+if (photos.length === 0) {
+    viewer.style.display = 'none';
+    caption.style.display = 'none';
+    counter.style.display = 'none';
+    empty.style.display = 'block';
+} else {
+    show(0);
+}
+
+document.getElementById('gallery-prev').addEventListener('click', function() {
+    show(current - 1);
+});
+
+document.getElementById('gallery-next').addEventListener('click', function() {
+    show(current + 1);
+});
+
+document.addEventListener('keydown', function(e) {
+    if (photos.length === 0) return;
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+});
+</script>
