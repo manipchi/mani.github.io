@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">home</a>
+            <div class="nav-links">
+                <a href="/blog/">blog</a>
+                <a href="/resources/">resources</a>
+                <a href="/travel/">gallery</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1 style="margin-bottom: 2rem;">travel</h1>
+
+<div class="gallery-container">
+    <div class="gallery-viewer" id="gallery-viewer">
+        <button class="gallery-nav gallery-prev" id="gallery-prev" aria-label="Previous photo">&larr;</button>
+        <img id="gallery-image" src="" alt="">
+        <button class="gallery-nav gallery-next" id="gallery-next" aria-label="Next photo">&rarr;</button>
+    </div>
+    <p class="gallery-caption" id="gallery-caption"></p>
+    <p class="gallery-counter" id="gallery-counter"></p>
+</div>
+
+<div class="gallery-empty" id="gallery-empty" style="display: none;">
+    <p>Photos coming soon.</p>
+</div>
+
+<script>
+// Add your photos here — each entry has a src path and a caption.
+// Place images in /assets/images/travel/ and add entries below.
+var photos = [
+    { src: '/assets/images/travel/eclipse.jpg', caption: 'Total Solar Eclipse in Mexico - April 2024' },
+    { src: '/assets/images/travel/barcelona.jpg', caption: 'Magic Square of La Sagrada Familia - September 2022' },
+    { src: '/assets/images/travel/bullring.jpg', caption: 'Plaza de Toros Bullring in Malaga - December 2016' },
+    { src: '/assets/images/travel/berlin.jpg', caption: 'Berlin Wall - December 2025' },
+    { src: '/assets/images/travel/brighton.jpg', caption: 'Brighton Fisherman - October 2021' },
+    { src: '/assets/images/travel/carthage.jpg', caption: 'Carthage - December 2023' },
+    { src: '/assets/images/travel/chamonix.jpg', caption: 'Chamonix - December 2024' },
+    { src: '/assets/images/travel/desert.jpg', caption: 'Sharjah, Dubai - December 2022' },
+    { src: '/assets/images/travel/dubaiatm.jpg', caption: 'ATM - December 2022' },
+    { src: '/assets/images/travel/escher.jpg', caption: 'Escher in The Hague - July 2024' },
+    { src: '/assets/images/travel/evian.jpg', caption: 'Évian - December 2019' },
+    { src: '/assets/images/travel/karelmartens.jpg', caption: 'Karel Martens in the Stedelijk - July 2025' },
+    { src: '/assets/images/travel/koln.jpg', caption: 'Cologne Cathedral - December 2025' },
+    { src: '/assets/images/travel/malaga.jpg', caption: 'Malalga - August 2022' },
+    { src: '/assets/images/travel/moon.jpg', caption: 'Cambridge Observatory - October 2022' },
+    { src: '/assets/images/travel/naples.jpg', caption: 'Naples Underground - September 2025' },
+    { src: '/assets/images/travel/niagara.jpg', caption: 'Niagara Falls - June 2024' },
+    { src: '/assets/images/travel/northernlights.jpg', caption: 'Northern Lights in Cambridge - May 2024' },
+    { src: '/assets/images/travel/oxford.jpg', caption: 'Oxford - January 2026' },
+    { src: '/assets/images/travel/pantheon.jpg', caption: 'Pantheon - June 2023' },
+    { src: '/assets/images/travel/paris.jpg', caption: 'Arc de Triomphe - November 2025' },
+    { src: '/assets/images/travel/schoolofathens.jpg', caption: 'School of Athens - June 2023' },
+    { src: '/assets/images/travel/split.jpg', caption: 'Split - July 2023' },
+    { src: '/assets/images/travel/tehran.jpg', caption: 'Tehran - July 2017' },
+    // { src: '/assets/images/travel/photo2.jpg', caption: 'Another caption' },
+];
+
+var current = 0;
+var viewer = document.getElementById('gallery-viewer');
+var image = document.getElementById('gallery-image');
+var caption = document.getElementById('gallery-caption');
+var counter = document.getElementById('gallery-counter');
+var empty = document.getElementById('gallery-empty');
+
+// Preload images for faster navigation
+function preloadImages(index) {
+    if (photos.length === 0) return;
+    var next = ((index + 1) % photos.length + photos.length) % photos.length;
+    var prev = ((index - 1) % photos.length + photos.length) % photos.length;
+    
+    var img1 = new Image();
+    var img2 = new Image();
+    img1.src = photos[next].src;
+    img2.src = photos[prev].src;
+}
+
+function show(index) {
+    if (photos.length === 0) return;
+    current = ((index % photos.length) + photos.length) % photos.length;
+    image.src = photos[current].src;
+    image.alt = photos[current].caption;
+    caption.textContent = photos[current].caption;
+    counter.textContent = (current + 1) + ' / ' + photos.length;
+    
+    // Preload adjacent images
+    preloadImages(current);
+}
+
+if (photos.length === 0) {
+    viewer.style.display = 'none';
+    caption.style.display = 'none';
+    counter.style.display = 'none';
+    empty.style.display = 'block';
+} else {
+    show(0);
+}
+
+document.getElementById('gallery-prev').addEventListener('click', function() {
+    show(current - 1);
+});
+
+document.getElementById('gallery-next').addEventListener('click', function() {
+    show(current + 1);
+});
+
+document.addEventListener('keydown', function(e) {
+    if (photos.length === 0) return;
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+});
+</script>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links" onmouseout="resetBackground()">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" class="social-link" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/manipchi" target="_blank" class="social-link" id="github" onmouseover="changeBackgroundColour('171515')">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" class="social-link" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                    <i class="fa-brands fa-spotify"></i>
+                </a>
+                <a href="https://letterboxd.com/manipchi/" target="_blank" class="social-link" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                    <span class="letterboxd-logo">
+                        <span class="circle-orange"></span>
+                        <span class="circle-green"></span>
+                        <span class="circle-blue"></span>
+                    </span>
+                </a>
+            </div>
+            <p class="footer-text">© 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme management
+        function getPreferredTheme() {
+            const stored = localStorage.getItem('theme');
+            if (stored) return stored;
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        }
+
+        // Initialize theme
+        setTheme(getPreferredTheme());
+
+        // Background color hover effects
+        function changeBackgroundColour(colour) {
+            document.body.style.backgroundColor = '#' + colour;
+        }
+
+        function resetBackground() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const defaultBg = theme === 'dark' ? '#0d1117' : '#ffffff';
+            document.body.style.backgroundColor = defaultBg;
+        }
+    </script>
+</body>
+</html>

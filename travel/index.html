@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Travel
+title: Gallery
 ---
 
 <h1 style="margin-bottom: 2rem;">travel</h1>
@@ -23,7 +23,30 @@ title: Travel
 // Add your photos here — each entry has a src path and a caption.
 // Place images in /assets/images/travel/ and add entries below.
 var photos = [
-    // { src: '/assets/images/travel/photo1.jpg', caption: 'Your caption here' },
+    { src: '/assets/images/travel/eclipse.jpg', caption: 'Total Solar Eclipse in Mexico - April 2024' },
+    { src: '/assets/images/travel/barcelona.jpg', caption: 'Magic Square of La Sagrada Familia - September 2022' },
+    { src: '/assets/images/travel/bullring.jpg', caption: 'Plaza de Toros Bullring in Malaga - December 2016' },
+    { src: '/assets/images/travel/berlin.jpg', caption: 'Berlin Wall - December 2025' },
+    { src: '/assets/images/travel/brighton.jpg', caption: 'Brighton Fisherman - October 2021' },
+    { src: '/assets/images/travel/carthage.jpg', caption: 'Carthage - December 2023' },
+    { src: '/assets/images/travel/chamonix.jpg', caption: 'Chamonix - December 2024' },
+    { src: '/assets/images/travel/desert.jpg', caption: 'Sharjah, Dubai - December 2022' },
+    { src: '/assets/images/travel/dubaiatm.jpg', caption: 'ATM - December 2022' },
+    { src: '/assets/images/travel/escher.jpg', caption: 'Escher in The Hague - July 2024' },
+    { src: '/assets/images/travel/evian.jpg', caption: 'Évian - December 2019' },
+    { src: '/assets/images/travel/karelmartens.jpg', caption: 'Karel Martens in the Stedelijk - July 2025' },
+    { src: '/assets/images/travel/koln.jpg', caption: 'Cologne Cathedral - December 2025' },
+    { src: '/assets/images/travel/malaga.jpg', caption: 'Malalga - August 2022' },
+    { src: '/assets/images/travel/moon.jpg', caption: 'Cambridge Observatory - October 2022' },
+    { src: '/assets/images/travel/naples.jpg', caption: 'Naples Underground - September 2025' },
+    { src: '/assets/images/travel/niagara.jpg', caption: 'Niagara Falls - June 2024' },
+    { src: '/assets/images/travel/northernlights.jpg', caption: 'Northern Lights in Cambridge - May 2024' },
+    { src: '/assets/images/travel/oxford.jpg', caption: 'Oxford - January 2026' },
+    { src: '/assets/images/travel/pantheon.jpg', caption: 'Pantheon - June 2023' },
+    { src: '/assets/images/travel/paris.jpg', caption: 'Arc de Triomphe - November 2025' },
+    { src: '/assets/images/travel/schoolofathens.jpg', caption: 'School of Athens - June 2023' },
+    { src: '/assets/images/travel/split.jpg', caption: 'Split - July 2023' },
+    { src: '/assets/images/travel/tehran.jpg', caption: 'Tehran - July 2017' },
     // { src: '/assets/images/travel/photo2.jpg', caption: 'Another caption' },
 ];
 
@@ -34,6 +57,18 @@ var caption = document.getElementById('gallery-caption');
 var counter = document.getElementById('gallery-counter');
 var empty = document.getElementById('gallery-empty');
 
+// Preload images for faster navigation
+function preloadImages(index) {
+    if (photos.length === 0) return;
+    var next = ((index + 1) % photos.length + photos.length) % photos.length;
+    var prev = ((index - 1) % photos.length + photos.length) % photos.length;
+    
+    var img1 = new Image();
+    var img2 = new Image();
+    img1.src = photos[next].src;
+    img2.src = photos[prev].src;
+}
+
 function show(index) {
     if (photos.length === 0) return;
     current = ((index % photos.length) + photos.length) % photos.length;
@@ -41,6 +76,9 @@ function show(index) {
     image.alt = photos[current].caption;
     caption.textContent = photos[current].caption;
     counter.textContent = (current + 1) + ' / ' + photos.length;
+    
+    // Preload adjacent images
+    preloadImages(current);
 }
 
 if (photos.length === 0) {
