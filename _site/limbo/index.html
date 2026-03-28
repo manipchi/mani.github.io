@@ -16,11 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    
     <nav class="navbar">
         <div class="nav-content">
             <a href="/" class="nav-logo">home</a>
             <div class="nav-links">
-                <a href="/blog/">blog</a>
+                <a href="/about/">about</a>
+                <a href="/projects/">projects</a>
                 <a href="/resources/">resources</a>
                 <a href="/travel/">gallery</a>
                 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -30,6 +32,7 @@
             </div>
         </div>
     </nav>
+    
 
     <main>
         <h1 style="margin-bottom: 1rem;">limbo.today</h1>
@@ -139,19 +142,20 @@
             </script> 
     </main>
 
+    
     <footer>
         <div class="footer-content">
-            <div class="social-links" onmouseout="resetBackground()">
-                <a href="https://www.linkedin.com/in/manipchi" target="_blank" class="social-link" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/manipchi" target="_blank" class="social-link" id="linkedin">
                     <i class="fa-brands fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/manipchi" target="_blank" class="social-link" id="github" onmouseover="changeBackgroundColour('171515')">
+                <a href="https://github.com/manipchi" target="_blank" class="social-link" id="github">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="https://open.spotify.com/user/manipchi" target="_blank" class="social-link" id="spotify" onmouseover="changeBackgroundColour('191414')">
+                <a href="https://open.spotify.com/user/manipchi" target="_blank" class="social-link" id="spotify">
                     <i class="fa-brands fa-spotify"></i>
                 </a>
-                <a href="https://letterboxd.com/manipchi/" target="_blank" class="social-link" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
+                <a href="https://letterboxd.com/manipchi/" target="_blank" class="social-link" id="letterboxd">
                     <span class="letterboxd-logo">
                         <span class="circle-orange"></span>
                         <span class="circle-green"></span>
@@ -162,6 +166,7 @@
             <p class="footer-text">© 2026</p>
         </div>
     </footer>
+    
 
     <script>
         // Theme management

@@ -1,120 +1,37 @@
 ---
 layout: default
 title: Mani
+no_nav: true
 ---
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-image">
-            <img src="/assets/images/profile.jpg" alt="Mani">
-        </div>
-        <div class="hero-text">
-            <h1>Mani Ipchi</h1>
-            <div class="hero-links" onmouseout="resetBackground()">
-                <a href="https://www.linkedin.com/in/manipchi" target="_blank" id="linkedin" onmouseover="changeBackgroundColour('0072b1')">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/manipchi" target="_blank" id="github" onmouseover="changeBackgroundColour('171515')">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://open.spotify.com/user/manipchi" target="_blank" id="spotify" onmouseover="changeBackgroundColour('191414')">
-                    <i class="fa-brands fa-spotify"></i>
-                </a>
-                <a href="https://letterboxd.com/manipchi/" target="_blank" id="letterboxd" onmouseover="changeBackgroundColour('14181c')">
-                    <span class="letterboxd-logo">
-                        <span class="circle-orange"></span>
-                        <span class="circle-green"></span>
-                        <span class="circle-blue"></span>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<section class="minimal-home">
+    <p class="minimal-quote" id="home-quote">In the land of the blind, the one eyed man is king.</p>
 
-<section class="section">
-    <h2 class="section-title">about</h2>
-    <div class="about-text">
-        <p>
-            I am <span id="age"></span> years old, born in Iran and raised in England.
-            I am studying Part III of the Maths Tripos at Cambridge, taking mainly
-            combinatorics courses and writing an essay on Canonical Ramsey Theory. I enjoy
-            watching <a href="https://letterboxd.com/manipchi/">films</a>, playing games,
-            solving puzzles and <a href="/travel/">travelling</a>.
-            I was the Webmaster for <a href="https://cuplc.co.uk">CUPLC</a> from 2023&ndash;2024
-            and the Treasurer for the <a href="https://cambridgepokersociety.com">Poker Society</a>
-            from 2024&ndash;2025.
-        </p>
-        <p>
-            I rowed both at school and for Fitzwilliam College Boat Club (only for one term at the latter).
-            I competed in the 2024 <a href="https://www.cambridgebumps.com/about">May Bumps</a>
-            and won <a href="https://en.wikipedia.org/wiki/May_Bumps#Blades,_Super-Blades,_Technical_Blades,_and_Spoons">blades</a>.
-            We had the pleasure of bumping Trinity out of Division 1,
-            leaving them with no boats in the top division for the first time in history.
-            I capsized a double during a race at Marlow Spring Regatta in 2019.
-            I have competed in powerlifting a few times, breaking a regional record in the
-            &minus;74kg u18 deadlift in 2022. 
-            My best deadlift is 220kg at a bodyweight of 73kg.
-            I am yet to bench 2 plates.
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <h2 class="section-title">experience</h2>
-    <ul class="simple-list">
-        <li>
-            <span class="date">2025</span>
-            Trader Intern at<a href="https://www.imc.com"> IMC Trading</a>
-        </li>
-        <li>
-            <span class="date">2024</span>
-            Trader Intern at<a href="https://www.optiver.com"> Optiver </a>
-        </li>
-    </ul>
-</section>
-
-<section class="section">
-    <h2 class="section-title">projects</h2>
-    <ul class="simple-list">
-        <li><a href="https://www.limbo.today" target="_blank">limbo.today</a> &mdash; a daily game of LUPI (Lowest Unique Positive Integer)</li>
-    </ul>
-</section>
-
-<section class="section">
-    <h2 class="section-title">anki decks</h2>
-    <p class="section-desc">Flashcard decks I made while studying the Maths Tripos at Cambridge.</p>
-    <ul class="simple-list inline">
-        <li><a href="./IA.apkg" download="PartIA">Part IA</a></li>
-        <li><a href="./IB.apkg" download="PartIB">Part IB</a></li>
-        <li><a href="./II.apkg" download="PartII">Part II</a></li>
-    </ul>
-</section>
-
-<section class="section">
-    <h2 class="section-title">latest posts</h2>
-    <div class="posts-list">
-        {% for post in site.posts limit:3 %}
-        <article class="post-preview">
-            <a href="{{ post.url }}">
-                <h2>{{ post.title }}</h2>
-                <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-            </a>
-        </article>
-        {% endfor %}
-        {% if site.posts.size == 0 %}
-        <p style="color: var(--text-muted);">No posts yet — coming soon!</p>
-        {% endif %}
-    </div>
-    {% if site.posts.size > 0 %}
-    <p style="margin-top: 1rem;"><a href="/blog/" style="color: var(--accent-color);">view all posts →</a></p>
-    {% endif %}
+    <nav class="minimal-links" onmouseout="resetBackground()" aria-label="Main sections">
+        <a href="/about/" onmouseover="changeBackgroundColour('e53a3a')">about me</a>
+        <a href="/projects/" onmouseover="changeBackgroundColour('e5733a')">projects</a>
+        <a href="/resources/" onmouseover="changeBackgroundColour('96bd2b')">resources</a>
+        <a href="/travel/" onmouseover="changeBackgroundColour('3a73e5')">gallery</a>
+    </nav>
 </section>
 
 <div id="birthday-banner">Happy Birthday! 🎂</div>
 
 <script>
 (function() {
+    var quotes = [
+        'In the land of the blind, the one eyed man is king.',
+        'Everything around you that you call life was made up by people that were no smarter than you and you can change it, you can influence it, you can build your own things that other people can use.',
+        "There are two kinds of people: Those who think they can, and those who think they can't, and they're both right.",
+        'One who makes no mistakes makes nothing at all.',
+        'When small men begin to cast big shadows, it means that the sun is about to set.'
+    ];
+    var quoteEl = document.getElementById('home-quote');
+    if (quoteEl) {
+        var randomIndex = Math.floor(Math.random() * quotes.length);
+        quoteEl.textContent = quotes[randomIndex];
+    }
+
     var today = new Date();
     var birthYear = 2004, birthMonth = 1, birthDay = 26;
     var age = today.getFullYear() - birthYear;
@@ -124,9 +41,11 @@ title: Mani
     }
 
     var ageEl = document.getElementById('age');
-    ageEl.textContent = age;
+    if (ageEl) {
+        ageEl.textContent = age;
+    }
 
-    if (today.getMonth() === birthMonth && today.getDate() === birthDay) {
+    if (today.getMonth() === birthMonth && today.getDate() === birthDay && ageEl) {
         ageEl.textContent = '🎉 ' + age + ' 🎉';
         ageEl.classList.add('birthday-age');
         document.getElementById('birthday-banner').classList.add('visible');

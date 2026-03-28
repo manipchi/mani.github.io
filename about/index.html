@@ -1,0 +1,86 @@
+---
+layout: default
+title: About
+---
+
+<section class="section">
+    <h1 style="margin-bottom: 1.5rem;">about me</h1>
+    <div class="about-text">
+        <img src="/assets/images/profile.jpg" alt="Mani" class="about-profile-image">
+        <p>
+            I am <span id="age"></span> years old, born in Iran and raised in England.
+            I am studying Part III of the Maths Tripos at Cambridge, taking mainly
+            combinatorics courses and writing an essay on Canonical Ramsey Theory. I enjoy
+            watching <a href="https://letterboxd.com/manipchi/">films</a>, playing games,
+            solving puzzles and <a href="/travel/">travelling</a>.
+            I was the Webmaster for <a href="https://cuplc.co.uk">CUPLC</a> from 2023&ndash;2024
+            and the Treasurer for the <a href="https://cambridgepokersociety.com">Poker Society</a>
+            from 2024&ndash;2025.
+        </p>
+        <p>
+            I rowed both at school and for Fitzwilliam College Boat Club (only for one term at the latter).
+            I competed in the 2024 <a href="https://www.cambridgebumps.com/about">May Bumps</a>
+            and won <a href="https://en.wikipedia.org/wiki/May_Bumps#Blades,_Super-Blades,_Technical_Blades,_and_Spoons">blades</a>.
+            We had the pleasure of bumping Trinity out of Division 1,
+            leaving them with no boats in the top division for the first time in history.
+            I capsized a double during a race at Marlow Spring Regatta in 2019.
+            I have competed in powerlifting a few times, breaking a regional record in the
+            &minus;74kg u18 deadlift in 2022.
+            My best deadlift is 220kg at a bodyweight of 73kg.
+            I am yet to bench 2 plates.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">experience</h2>
+    <ul class="simple-list">
+        <li>
+            <span class="date">2025</span>
+            Trader Intern at <a href="https://www.imc.com">IMC Trading</a>
+        </li>
+        <li>
+            <span class="date">2024</span>
+            Trader Intern at <a href="https://www.optiver.com">Optiver</a>
+        </li>
+    </ul>
+</section>
+
+<div id="birthday-banner">Happy Birthday! 🎂</div>
+
+<script>
+(function() {
+    var today = new Date();
+    var birthYear = 2004, birthMonth = 1, birthDay = 26;
+    var age = today.getFullYear() - birthYear;
+    if (today.getMonth() < birthMonth ||
+        (today.getMonth() === birthMonth && today.getDate() < birthDay)) {
+        age--;
+    }
+
+    var ageEl = document.getElementById('age');
+    if (ageEl) {
+        ageEl.textContent = age;
+    }
+
+    if (today.getMonth() === birthMonth && today.getDate() === birthDay && ageEl) {
+        ageEl.textContent = '🎉 ' + age + ' 🎉';
+        ageEl.classList.add('birthday-age');
+        document.getElementById('birthday-banner').classList.add('visible');
+
+        var colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff922b', '#cc5de8'];
+        for (var i = 0; i < 60; i++) {
+            var c = document.createElement('div');
+            c.className = 'confetti';
+            c.style.left = Math.random() * 100 + 'vw';
+            c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            c.style.animationDelay = (Math.random() * 3) + 's';
+            c.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(c);
+        }
+        setTimeout(function() {
+            document.querySelectorAll('.confetti').forEach(function(el) { el.remove(); });
+        }, 6000);
+    }
+})();
+</script>
